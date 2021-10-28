@@ -14,7 +14,7 @@ connection.connect( (err) =>{
 
   const addtodb = (arr, callback) => {
     let sql =
-      "insert into dbtable (username ,favColor, choice) values (?,?,?)";
+      "insert into dbtable (username ,favColor, choice, post) values (?,?,?,?)";
     connection.query(sql, arr, (err, data) => {
       if (err) throw callback(err, null);
       callback(null, data);
@@ -31,7 +31,7 @@ connection.connect( (err) =>{
 
 
   const getUserDetail = (name, callback) => {
-    let sql = `select * from dbtable where username = ?`
+    let sql = `select post from dbtable where username = ?`
     connection.query(sql, name,(err, data) => {
       if (err) throw callback(err, null);
       callback(null, data);

@@ -1,0 +1,172 @@
+<style>
+
+  mat-form-field {
+    margin-right: 12px;
+  }
+
+
+  .box {
+    background-color: black;
+    opacity: 0.5;
+    margin: 8.5%;
+    margin-left: 29%;
+    border: 1px solid DarkKhaki;
+    border-radius:5px;
+    width: 35%;
+  }
+
+  .lab {
+    opacity: 0.9;
+    background-image: url(../assets/background.jpg);
+    background-position: 50%;
+    background-size: cover;
+    border: 12px dashed black;
+    border-radius: 5px;
+    padding: 1.6%;
+    margin: 0.4%;
+  }
+
+  h1 {
+    text-align: center;
+    color: white;
+    position: absolute;
+    margin-left: 32.8%;
+    border: 2px solid darkkhaki;
+    border-radius: 15px;
+    background-color: black;
+    opacity: 0.5;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+  p {
+    color: white;
+    margin-left: 22%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+  label  {
+    margin-left: 22%;
+  }
+
+  .input {
+    margin-left: 35%;
+    margin: 4%;
+    border: 3xp solid darkkhaki;
+    border-radius: 8px ;
+    font-size: medium;
+    font-style: oblique;
+    color: darkkhaki;
+  }
+  select {
+    margin-left: 5%;
+    margin-top: 4%;
+    padding: 0.8%;
+    border-radius: 5px;
+  }
+
+  #button {
+    margin-top: 7%;
+    margin-left: 35%;
+    padding: 1%;
+  }
+  button {
+    border : 1px solid darkkhaki ;
+    border-radius: 8px;
+  }
+  textarea {
+    margin-left: 5%;
+    width: 73%;
+    padding: 8%;
+    border-radius: 14px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+  }
+  #but {
+    padding: 1%;
+  }
+  .searchDiv {
+    padding: 28%;
+    margin-top: -20%;
+  }
+  .story{
+    width: 80%;
+    height: 70%;
+    background-color: black;
+    opacity: 0.7;
+  }
+
+
+
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .flex-item-left {
+    background-color: #f1f1f1;
+    padding: 10px;
+    flex: 50%;
+  }
+
+  .story {
+    background-color: black;
+
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: medium;
+  }
+
+  /* Responsive layout - makes a one column-layout instead of a two-column layout */
+  @media (max-width: 800px) {
+    .flex-item-right, .flex-item-left {
+      flex: 100%;
+    }
+  }
+</style>
+
+<div class = "lab" >
+  <h1>🐱‍👤 Cat && Dog 🐶</h1>
+  <div>
+    <div [hidden]="isShowDiv" class = "box" >
+      <label>
+        <input class = "input"#inp type = "text" placeholder = "Your Name ...">
+        <button (click)="userName(inp.value)">check</button>
+      </label>
+      <label>
+        <input class = "input"#fav type = "text" placeholder = "Your Favourite Color ...">
+      </label>
+      <label>
+        <select #choice >
+          <option>choose your favourite pet</option>
+          <option>  Dog  </option>
+          <option>  Cat  </option>
+        </select>
+      </label>
+      <p>share funny fact with your animal</p>
+        <textarea #area charset = "utf-8"></textarea>
+        <button id = "button" (click)= "getAndSendVal(fav.value, choice.value, area.value)">SHARE</button>
+        <button id = "but" (click)= "next()">SEARCH</button>
+    </div>
+  </div>
+  <div [hidden]="!isShowDiv">
+      <div class="searchDiv">
+        <div class="story">
+          <div class="flex-container">
+        <div class="flex-item-left">
+          <input #input type="text" placeholder="search a story">
+        <button id = "button" (click) = "searchVal(input.value)">
+          SUBMIT
+        </button>
+      </div>
+      <div class="story">
+         <p>{{this.userStory}}</p>
+      </div>
+        </div>
+      </div>
+      </div>
+  </div>
+</div>
+
+
